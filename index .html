@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HESI-CROSS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- cart icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
+  <!-- CSS -->
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: #fff;
+      color: #64bbee;
+    }
+    header {
+      background: #f1cce1;
+      color: #6f9cf0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  width: 100%;
+}
+
+nav a,
+nav button,
+nav input {
+  background: none;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 8px 12px;
+  text-decoration: none;
+}
+
+nav input {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 20px;
+      background: linear-gradient(to bottom, #f08f11, #f5c424);
+      color: #000;
+    }
+    .hero-text {
+      flex: 1 1 300px;
+      padding-right: 20px;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #222;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+    .hero p b { color: #0057b8; }
+    .hero p span { font-weight: bold; color: #a00; }
+    .hero img {
+      height: 300px;
+      width: auto;
+      flex: 1 1 250px;
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    .hero button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      nav {
+        justify-content: center;
+      }
+      .hero-text {
+        padding-right: 0;
+      }
+    }
+
+    .products {
+      background: #004d4d;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .product-card {
+      background: white;
+      color: #000;
+      border-radius: 10px;
+      width: 200px;
+      padding: 10px;
+      text-align: center;
+    }
+    .product-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .promo {
+      background: #46d1e4;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      color: rgb(0, 0, 0);
+      flex-wrap: wrap;
+    }
+    .promo img {
+      width: 350px;
+      height: 300px;
+    }
+    .promo button {
+      padding: 10px 20px;
+      background: #fff;
+      color: #1e90ff;
+      border: none;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+    }
+    .modal-content input {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+    .modal-content button {
+      width: 100%;
+      padding: 10px;
+      background: #333;
+      color: white;
+      border: none;
+    }
+    .modal-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 600px;
+}
+
+.modal-left {
+  flex: 1;
+  text-align: center;
+}
+
+.modal-left img {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+.modal-left h2 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.modal-right {
+  flex: 2;
+}
+
+.modal-right input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.modal-right button {
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.social-login button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.google-btn {
+  background-color: #db4437;
+  color: white;
+}
+
+.facebook-btn {
+  background-color: #4267B2;
+  color: white;
+}
+
+.apple-btn {
+  background-color: #000;
+  color: white;
+}
+
+.social-login button:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+  .modal-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+    /* General button hover */
+button:hover {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hero section button - blue on hover */
+.hero button:hover {
+  background-color: #0057b8; /* Blue */
+  color: white;
+}
+
+/* Promo section button - black on hover */
+.promo button:hover {
+  background-color: #000; /* Black */
+  color: white;
+}
+
+/* Navigation buttons - gray on hover */
+nav button:hover {
+  background-color: #444; /* Dark gray */
+  color: white;
+}
+
+/* Cart icon hover effect in product cards */
+.product-card i:hover {
+  color: #f790cc; /* Soft pink */
+  transform: scale(1.2);
+  transition: transform 0.2s, color 0.2s;
+}
+
+/* Signup button (blue) hover */
+nav button[style*="background-color: #0057b8"]:hover {
+  background-color: #003c80;
+  color: #fff;
+}
+/* Style for all nav buttons */
+.nav-btn {
+  background: none;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 8px 12px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect for nav buttons */
+.nav-btn:hover {
+  background-color: #0057b8;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .nav-btn {
+    width: 100%;
+    text-align: left;
+    margin-top: 5px;
+  }
+}
+.signup-btn {
+  background-color: #0057b8;
+  color: white;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.signup-btn:hover {
+  background-color: #003c80;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .signup-btn {
+    width: 100%;
+    text-align: left;
+    margin-top: 5px;
+  }
+}
+.product-tab-btn {
+  padding: 10px 20px;
+  background-color: #0057b8;
+  color: rgba(255, 255, 255, 0.918);
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.product-tab-btn:hover {
+  background-color: #003c80;
+}
+
+.active-tab {
+  background-color: #003c80;
+}
+.product-card {
+  position: relative;
+  background: #fff;
+  color: #000;
+  border-radius: 10px;
+  width: 200px;
+  padding: 10px;
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Image scaling */
+.product-card img {
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Overlay effect */
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 87, 184, 0.1); /* Blue glow overlay */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.product-card:hover::before {
+  opacity: 1;
+}
+
+/* Icon styling */
+.product-card i {
+  margin-top: 10px;
+  font-size: 1.4rem;
+  color: #333;
+  transition: transform 0.3s, color 0.3s;
+  z-index: 2;
+  position: relative;
+}
+
+.product-card:hover i {
+  color: #f790cc;
+  transform: scale(1.3) rotate(5deg);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  position: relative;
+  margin: 5% auto;
+  width: 90%;
+  max-width: 700px;
+  background: #fff;
+  padding: 0;
+  border-radius: 8px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+}
+.highlight-sparkle {
+  animation: sparkle 1s ease-in-out;
+  box-shadow: 0 0 10px 5px #ffd700;
+}
+
+@keyframes sparkle {
+  0% {
+    box-shadow: 0 0 10px 5px #fff700;
+  }
+  50% {
+    box-shadow: 0 0 20px 15px #ffd700;
+  }
+  100% {
+    box-shadow: 0 0 0px 0px transparent;
+  }
+}
+.watch-video-btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #0057b8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.watch-video-btn:hover {
+  background-color: #003c80;
+  transform: scale(1.05);
+}
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px;
+  }
+
+  nav a,
+  nav button,
+  nav input {
+    width: 100%;
+    margin: 5px 0;
+    text-align: center;
+  }
+}
+.promotions-section {
+  background-color: #626ae4;
+  padding: 50px 20px;
+}
+
+.promotions-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.promo-text {
+  flex: 1;
+  max-width: 300px;
+}
+
+.promo-text h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.promo-text p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.explore-btn {
+  padding: 10px 20px;
+  background-color: #e60023;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.explore-btn:hover {
+  background-color: #c1001c;
+}
+
+.promo-image-center,
+.promo-image-right {
+  flex: 1;
+  text-align: center;
+}
+
+.promo-image-center img,
+.promo-image-right img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.instagram-section {
+  padding: 40px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.instagram-title {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.instagram-handle {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 30px;
+}
+
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 6 columns */
+  grid-template-rows: repeat(2, auto);  /* 2 rows */
+  gap: 15px;
+  justify-items: center;
+  align-items: center;
+}
+
+.insta-box {
+  width: 150px;
+  height: 150px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.insta-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.insta-box {
+  width: 150px;
+  height: 150px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.insta-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Animation on hover */
+.insta-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.insta-box:hover img {
+  transform: scale(1.1);
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.9), 
+            0 0 60px rgba(0, 255, 255, 0.6);
+
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+}
+
+.pulse-continuous {
+  animation: pulse 2s infinite;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 10px;
+}
+.site-footer {
+  background-color: #333;
+  color: white;
+  padding: 40px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-family: Arial, sans-serif;
+}
+
+.footer-left,
+.footer-right {
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 20px;
+}
+
+.footer-section {
+  margin-bottom: 30px;
+}
+
+.site-footer h3 {
+  margin-bottom: 10px;
+}
+
+.site-footer ul {
+  list-style: none;
+  padding: 0;
+  line-height: 1.8;
+}
+
+.site-footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+#language-select {
+  margin-top: 5px;
+  padding: 5px;
+  background: #fff;
+  color: #333;
+  border-radius: 4px;
+}
+
+.footer-right form {
+  margin-top: 10px;
+}
+
+.footer-right input[type="email"] {
+  padding: 10px;
+  width: 80%;
+  max-width: 300px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 4px;
+}
+
+.footer-right button {
+  padding: 10px 20px;
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.social-icons {
+  margin-top: 20px;
+}
+
+.social-icons img {
+  width: 24px;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+
+.footer-bottom {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.footer-bottom a {
+  color: #ccc;
+  margin: 0 5px;
+}
+.hero-title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #222;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-title:hover {
+  color: #0057b8;
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(0, 87, 184, 0.7);
+}
+.hero-title {
+  animation: fadeSlideUp 1s ease forwards;
+  opacity: 0;
+}
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/*  hover effect for Shop, Offers, and Contact Us */
+nav a {
+  padding: 8px 12px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #000;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #0057b8; /* Blue background on hover */
+  color: white; /* White text color on hover */
+  border-radius: 5px;
+}
+
+
+nav a:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="HESI CROSS.png" alt="HESI-CROSS Logo">
+      <span>HESI-CROSS</span>
+    </div>
+    <nav>
+        <a href="#" onclick="goToProducts()">Shop</a>
+        <a href="#" onclick="goToBestSellers()">Offers</a> 
+        <a href="#contact" class="menu-item">Contact Us</a>       
+      <button class="nav-btn home-btn">Home</button>
+      <input type="text" id="searchInput" placeholder="Search product..." onkeydown="handleSearchKey(event)">
+      <a href="#" id="cart-count">Cart (0)</a>
+      <button onclick="openModal()">LOG IN</button>
+      <button onclick="openSignup()" class="signup-btn">SIGNUP</button>
+
+
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1 class="hero-title">UNLEASH GREATNESS</h1>
+      <p>
+        Welcome to <b>HESI-CROSS!</b> Featuring
+        <span>LeBron James</span>, <span>Stephen Curry</span>, and <span>Jordan Clarkson</span>,
+        our exclusive collection brings you the game-changing kicks worn by these basketball legends.
+        Step into style and performance with every pair, whether you're on the court or hitting the streets.
+        Shop now and level up your footwear game!
+      </p>
+      <button onclick="document.getElementById('products').scrollIntoView({ behavior: 'smooth' })">Shop Now</button>
+    </div>
+    <img src="king.jpg" alt="Basketball Stars">
+  </section>
+
+  <section class="products" id="products">
+    <h2>OUR PRODUCTS</h2>
+  
+    <!-- Tab Buttons -->
+    <div style="margin-bottom: 20px;">
+      <button onclick="showTab('best-sellers')" class="product-tab-btn active-tab">Best Sellers</button>
+      <button onclick="showTab('new-arrivals')" class="product-tab-btn">New Arrivals</button>
+    </div>
+  
+    <!-- Best Sellers Section -->
+    <div id="best-sellers" class="product-grid">
+      <div class="product-card">
+        <img src="RUSI.jpg" alt="Rusi 125">
+        <h1>Rusi 125</h1>
+        <p>PHP 3000</p>
+        <i class="fas fa-shopping-cart" onclick="addToCart('Rusi 125')"></i>
+      </div>
+      <div class="product-card">
+        <img src="ADASDAS.jpg" alt="Adasdas V.3">
+        <h1>Adasdas V.3</h1>
+        <p>PHP 5,000</p>
+        <i class="fas fa-shopping-cart" onclick="addToCart('Adasdas V.3')"></i>
+      </div>
+      <div class="product-card">
+        <img src="KAWASAKI.jpg" alt="Kawasaki Ninja">
+        <h1>Kawasaki Ninja</h1>
+        <p>PHP 6,500</p>
+        <i class="fas fa-shopping-cart" onclick="addToCart('Kawasaki Ninja')"></i>
+      </div>
+      <div class="product-card">
+        <img src="under arms.jpg" alt="Under Arms">
+        <h1>Under Arms</h1>
+        <p>PHP 4,300</p>
+        <i class="fas fa-shopping-cart" onclick="addToCart('Under Arms')"></i>
+      </div>
+    </div>
+  
+    <!-- New Arrivals Section (initially hidden) -->
+    <div id="new-arrivals" class="product-grid" style="display: none;">
+        <div class="product-card" id="sabrina-shoe">
+            <img src="SABRINA.jpg" alt="Sabrina 2">
+            <h1>Sabrina 2</h1>
+            <p>PHP 10,000</p>
+            <i class="fas fa-shopping-cart" onclick="addToCart('Sabrina2')"></i>
+          </div>
+          
+      <div class="product-card">
+        <img src="lebron-james.jpg" alt="Lebron">
+        <h1>Lebron</h1>
+        <p>PHP 6,800</p>
+        <i class="fas fa-shopping-cart" onclick="addToCart('Lebron')"></i>
+      </div>
+      <div class="product-card">
+        <img src="pg6.jpg" alt="Nike PG 6">
+        <h1>Nike PG 6</h1>
+        <p>PHP 5,900</p>
+        <i class="fas fa-shopping-cart" onclick="addToCart('Nike PG 6')"></i>
+      </div>
+      <div class="product-card">
+        <img src="jamorant.png" alt="Ja Morant 1">
+        <h1>Ja Morant 1</h1>
+        <p>PHP 6,000</p>
+        <i class="fas fa-shopping-cart" onclick="addToCart('Ja Morant 2')"></i>
+      </div>
+    </div>
+  </section>
+  
+
+  </section>
+  <div class="modal" id="cartModal">
+    <div class="modal-content">
+      <h2>Your Cart</h2>
+      <div id="cartItems"></div>
+      <button onclick="closeCart()">Close</button>
+    </div>
+  </div>
+  
+
+  <section class="promo">
+    <img src="sab.jpg" alt="Magazine Cover">
+    <div>
+      <h2>SABRINA IONESCU</h2>
+      <p>Introducing SABRINA 2</p>
+      <button onclick="goToSabrina()">Explore</button>
+    </div>
+    <img src="sab2.png" alt="Shoe">
+  </section>
+
+  <!-- Nike JA 2 Section -->
+  <section class="product-highlight">
+    <div class="ja2-container">
+      <img src="ja2.png" alt="JA 2 Logo" class="ja2-image">
+      <button class="watch-video-btn" onclick="openVideo()">Watch Video</button>
+    </div>
+  </section>  
+
+  <!-- Video Modal -->
+  <div id="videoModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeVideo()">&times;</span>
+      <iframe 
+        id="videoFrame" 
+        width="560" 
+        height="315" 
+        src="https://www.youtube.com/embed/8zqeOZrFRwo" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+  </section>
+  <!-- Promotions Section -->
+<section class="promotions-section">
+  <div class="promotions-container">
+    <div class="promo-text">
+      <h2>Read What's New</h2>
+      <p>We have an upcoming shoes sale with <strong>50% off</strong> this <strong>OCTOBER 2025</strong>!</p>
+      <button class="explore-btn">Explore Now</button>
+    </div>
+
+    <div class="promo-image-center">
+      <img src="SALE.jpg" alt="Shoe Sale Image">
+    </div>
+
+    <div class="promo-image-right">
+      <img src="ja.jpg" alt="Ja Morant Image">
+    </div>
+  </div>
+</section>
+<!-- Instagram Section -->
+<section class="instagram-section">
+  <h2 class="instagram-title">Instagram</h2>
+  <p class="instagram-handle">@hesi_cross_ official</p>
+
+  <div class="instagram-grid">
+    <div class="insta-box pulse-continuous"><img src="RUSI.jpg" alt="Shoe 1"></div>
+    <div class="insta-box pulse-continuous"><img src="jamorant.png" alt="Shoe 2"></div>
+    <div class="insta-box pulse-continuous"><img src="ADASDAS.jpg" alt="Shoe 3"></div>
+    <div class="insta-box pulse-continuous"><img src="lebron-james.jpg" alt="Shoe 4"></div>
+    <div class="insta-box pulse-continuous"><img src="pamu.jpg" alt="Shoe 5"></div>
+    <div class="insta-box pulse-continuous"><img src="freak.jpg" alt="Shoe 6"></div>
+    <div class="insta-box pulse-continuous"><img src="puma.jpg" alt="Shoe 7"></div>
+    <div class="insta-box pulse-continuous"><img src="SABRINA.jpg" alt="Shoe 8"></div>
+    <div class="insta-box pulse-continuous"><img src="KAWASAKI.jpg" alt="Shoe 9"></div>
+    <div class="insta-box pulse-continuous"><img src="adidas.jpg" alt="Shoe 10"></div>
+    <div class="insta-box pulse-continuous"><img src="under arms.jpg" alt="Shoe 11"></div>
+    <div class="insta-box pulse-continuous"><img src="kobe.jpg" alt="Shoe 12"></div>
+  </div>
+</section>
+<footer id="contact">
+<footer class="site-footer">
+  <!-- Left Side -->
+  <div class="footer-left">
+    <div class="footer-section">
+      <h3>About</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Help</a></li>
+        <li>
+          <label for="language-select">English:</label>
+          <select id="language-select">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="es">Español</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <ul>
+        <li>Phone Number: +123 456 789</li>
+        <li>Email: hesi-cross@gmail.com</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Right Side -->
+  <div class="footer-right">
+    <h3>Receive New Information</h3>
+    <form onsubmit="event.preventDefault(); alert('Subscribed!');">
+      <input type="email" placeholder="Your email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+
+    <div class="social-icons">
+      <a href="#"><img src="FB.png" alt="Facebook"></a>
+      <a href="#"><img src="GOG.jpg" alt="Google"></a>
+      <a href="#"><img src="YT.png" alt="YouTube"></a>
+    </div>
+
+    <p class="footer-bottom">
+      © 2025 HESI-CROSS NC | <a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">Site Map</a>
+    </p>
+  </div>
+</footer>
+
+
+ 
+  <div class="modal" id="loginModal">
+    <div class="modal-content modal-flex">
+      <!-- Left side with logo and name -->
+      <div class="modal-left">
+        <img src="HESI CROSS.png" alt="HESI-CROSS Logo">
+        <h2>HESI-CROSS</h2>
+      </div>
+  
+      <!-- Right side with login form -->
+      <div class="modal-right">
+        <h2>Login</h2>
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <button onclick="closeModal()">Login</button>
+  
+        <div class="social-login">
+          <button class="google-btn"><i class="fab fa-google"></i> Login with Google</button>
+          <button class="facebook-btn"><i class="fab fa-facebook"></i> Login with Facebook</button>
+          <button class="apple-btn"><i class="fab fa-apple"></i> Login with Apple ID</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="signupModal">
+    <div class="modal-content modal-flex">
+      <div class="modal-left">
+        <img src="HESI CROSS.png" alt="HESI-CROSS Logo">
+        <h2>HESI-CROSS</h2>
+      </div>
+  
+      <div class="modal-right">
+        <h2>Create Account</h2>
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <button onclick="closeSignup()">Sign Up</button>
+  
+        <div class="social-login">
+          <button class="google-btn"><i class="fab fa-google"></i> Sign up with Google</button>
+          <button class="facebook-btn"><i class="fab fa-facebook"></i> Sign up with Facebook</button>
+          <button class="apple-btn"><i class="fab fa-apple"></i> Sign up with Apple ID</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartDisplay();
+    }
+  
+    function addToCart(productName) {
+      cart.push(productName);
+      saveCart();
+      alert(`${productName} has been added to your cart!`);
+    }
+  
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      saveCart();
+    }
+  
+    function updateCartDisplay() {
+      const cartCount = document.getElementById('cart-count');
+      cartCount.textContent = `Cart (${cart.length})`;
+    }
+  
+    function openCart() {
+      const cartModal = document.getElementById('cartModal');
+      const cartItemsContainer = document.getElementById('cartItems');
+      cartItemsContainer.innerHTML = '';
+  
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+      } else {
+        const list = document.createElement('ul');
+        cart.forEach((item, index) => {
+          const li = document.createElement('li');
+          li.innerHTML = `
+            ${item}
+            <button onclick="removeFromCart(${index})" style="margin-left:10px; color: red;">Remove</button>
+          `;
+          list.appendChild(li);
+        });
+        cartItemsContainer.appendChild(list);
+      }
+  
+      cartModal.style.display = 'flex';
+    }
+  
+    function closeCart() {
+      document.getElementById('cartModal').style.display = 'none';
+    }
+  
+    function openModal() {
+      document.getElementById('loginModal').style.display = 'flex';
+    }
+  
+    function closeModal() {
+      document.getElementById('loginModal').style.display = 'none';
+    }
+  
+    function openSignup() {
+      document.getElementById('signupModal').style.display = 'flex';
+    }
+  
+    function closeSignup() {
+      document.getElementById('signupModal').style.display = 'none';
+    }
+  
+    window.onclick = function(event) {
+      const modals = ['loginModal', 'signupModal', 'cartModal', 'videoModal'];
+      modals.forEach(id => {
+        const modal = document.getElementById(id);
+        if (event.target === modal) modal.style.display = 'none';
+      });
+    };
+  
+    function showTab(tabId) {
+      document.getElementById('best-sellers').style.display = 'none';
+      document.getElementById('new-arrivals').style.display = 'none';
+      document.getElementById(tabId).style.display = 'flex';
+  
+      const buttons = document.querySelectorAll('.product-tab-btn');
+      buttons.forEach(btn => btn.classList.remove('active-tab'));
+      const activeBtn = Array.from(buttons).find(btn =>
+        btn.textContent.toLowerCase().includes(tabId.replace('-', ' '))
+      );
+      if (activeBtn) activeBtn.classList.add('active-tab');
+    }
+  
+    function openVideo() {
+      document.getElementById("videoModal").style.display = "block";
+    }
+  
+    function closeVideo() {
+      const modal = document.getElementById("videoModal");
+      modal.style.display = "none";
+      const frame = document.getElementById("videoFrame");
+      frame.src = frame.src;
+    }
+  
+    function goToSabrina() {
+      showTab('new-arrivals');
+      setTimeout(() => {
+        const sabrinaCard = document.getElementById('sabrina-shoe');
+        if (sabrinaCard) {
+          sabrinaCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          sabrinaCard.classList.add('highlight-sparkle');
+          setTimeout(() => sabrinaCard.classList.remove('highlight-sparkle'), 1500);
+        }
+      }, 100);
+    }
+  
+    function goToProducts() {
+      document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+    }
+  
+    function goToBestSellers() {
+      showTab('best-sellers');
+      document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+    }
+  
+    function handleSearchKey(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const productCards = document.querySelectorAll('.product-card');
+  
+        let found = false;
+        productCards.forEach(card => {
+          const name = card.querySelector('h1').textContent.toLowerCase();
+          if (name.includes(query)) {
+            const parentId = card.closest('#best-sellers') ? 'best-sellers' : 'new-arrivals';
+            showTab(parentId);
+            setTimeout(() => {
+              card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              card.classList.add('highlight-sparkle');
+              setTimeout(() => card.classList.remove('highlight-sparkle'), 1500);
+            }, 100);
+            found = true;
+          }
+        });
+  
+        if (!found) {
+          alert("No matching product found.");
+        }
+      }
+    }
+  
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartDisplay();
+      document.getElementById('cart-count').addEventListener('click', (e) => {
+        e.preventDefault();
+        openCart();
+      });
+    });
+    
+  </script>
+  
+</body>
+</html>
